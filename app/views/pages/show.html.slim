@@ -1,0 +1,5 @@
+h1 = @page.title
+p = sanitize @page.body
+= link_to 'Edit', edit_page_path(@page)
+br
+= link_to 'All pages', root_path
