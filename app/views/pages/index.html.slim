@@ -1,6 +1,8 @@
 h2 Pages
-= link_to 'Add page', new_page_path
-table
+.form-group
+  .btn-toolbar
+    = link_to 'Add page', new_page_path, class: 'btn btn-primary'
+table.table.table-hover
   thead 
     tr
       th Name
