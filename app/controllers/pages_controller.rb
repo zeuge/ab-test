@@ -14,7 +14,10 @@ class PagesController < ApplicationController
 
   def new
     @page = Page.new
-    @page.parent_id = params[:id] if params[:id]
+    if params[:id]
+      parent_id = params[:id].split('/').last
+      @page.parent_id = parent_id if parent_id
+    end
   end
 
   def create
@@ -47,7 +50,16 @@ class PagesController < ApplicationController
   private
 
   def set_page
-    @page = Page.find params[:id]
+    id_arrays = params[:id].split '/'
+    id = id_arrays.pop
+
+    if id_arrays.empty?
+      ancestry = nil
+    else
+      ancestry = id_arrays.join '/'
+    end
+
+    @page = Page.find_by! id: id, ancestry: ancestry
   end
 
   def page_params
