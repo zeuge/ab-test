@@ -1,6 +1,10 @@
 class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
 
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    redirect_to pages_url, alert: 'Page not found.'
+  end
+
   def index
     @pages = Page.all
   end
