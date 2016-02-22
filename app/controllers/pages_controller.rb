@@ -14,6 +14,7 @@ class PagesController < ApplicationController
 
   def new
     @page = Page.new
+    @page.parent_id = params[:id] if params[:id]
   end
 
   def create
@@ -50,7 +51,7 @@ class PagesController < ApplicationController
   end
 
   def page_params
-    params.require(:page).permit :name, :title, :body
+    params.require(:page).permit :name, :title, :body, :parent_id
   end
 
 end

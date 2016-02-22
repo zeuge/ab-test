@@ -1,4 +1,5 @@
 = form_for @page, html: {class: 'form-horizontal'} do |f|
+  = f.hidden_field :parent_id
   .form-group
     .btn-toolbar
       = f.submit class: 'btn btn-primary'

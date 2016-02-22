@@ -2,15 +2,5 @@ h2 Pages
 .form-group
   .btn-toolbar
     = link_to 'Add page', new_page_path, class: 'btn btn-primary'
-table.table.table-hover
-  thead 
-    tr
-      th Name
-      th Title
-  tbody
-    - @pages.each do |page|
-      tr
-        td = link_to page.name, page_path(page)
-        td = page.title
-        
-        
+
+= nested_pages @pages.arrange order: :name

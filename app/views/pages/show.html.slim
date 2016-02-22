@@ -1,6 +1,10 @@
 h1 = @page.title
 p = sanitize @page.body
 .form-group
+  h4 Subpages
+  = nested_pages @page.descendants.arrange order: :name
+.form-group
   .btn-toolbar
     = link_to 'Edit', edit_page_path(@page), class: 'btn btn-primary'
-    = link_to 'Cancel', root_path, class: 'btn btn-default'
+    = link_to 'Add subpage', new_sub_page_path(@page), class: 'btn btn-primary'
+    = link_to 'Back to all pages', root_path, class: 'btn btn-default'
