@@ -3,4 +3,4 @@ h2 Pages
   .btn-toolbar
     = link_to 'Add page', new_page_path, class: 'btn btn-primary'
 
-= nested_pages @pages.arrange order: :name
+= nested_pages @pages.arrange order: :title

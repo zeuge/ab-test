@@ -6,16 +6,16 @@ describe Page do
     expect(new_page).to be_valid
   end
 
-  it 'is invalid without a name' do
-    new_page = build :page, name: nil
+  it 'is invalid without a id' do
+    new_page = build :page, id: nil
     new_page.valid?
-    expect(new_page.errors[:name]).to include "can't be blank"
+    expect(new_page.errors[:id]).to include "can't be blank"
   end
 
   it 'is invalid with incorrect characters' do
-    new_page = build :page, name: 'a~!@#$%^&*a()-+=/<>?:a'
+    new_page = build :page, id: 'a~!@#$%^&*a()-+=/<>?:a'
     new_page.valid?
-    expect(new_page.errors[:name]).to include 'contains invalid characters'
+    expect(new_page.errors[:id]).to include 'contains invalid characters'
   end
 
   it 'is valid without a title' do

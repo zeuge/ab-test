@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe PagesController do
   let(:page) { create :page }
-  let(:valid_attributes) { attributes_for :page, name: 'valid_name' }
-  let(:invalid_attributes) { attributes_for :page, name: nil }
+  let(:valid_attributes) { attributes_for :page, title: 'valid_title' }
+  let(:invalid_attributes) { attributes_for :page, id: nil }
 
   describe 'GET #index' do
     it 'returns http success' do
@@ -85,7 +85,7 @@ describe PagesController do
       it 'updates the requested page' do
         put :update, id: page.to_param, page: valid_attributes
         page.reload
-        expect(page.name).to eq valid_attributes[:name]
+        expect(page.title).to eq valid_attributes[:title]
       end
       it 'assigns the requested page as @page' do
         put :update, id: page.to_param, page: valid_attributes
@@ -101,7 +101,7 @@ describe PagesController do
       it "does not change page's attributes" do
         put :update, id: page.to_param, page: invalid_attributes
         page.reload
-        expect(page.name).not_to eq invalid_attributes[:name]
+        expect(page.id).not_to eq invalid_attributes[:id]
       end
       it 're-renders the :edit template' do
         put :update, id: page.to_param, page: invalid_attributes
