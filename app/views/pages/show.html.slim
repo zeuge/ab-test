@@ -1,5 +1,5 @@
 h1 = @page.title
-p = sanitize @page.body
+= raw @page.html
 .form-group
   h4 Subpages
   = nested_pages @page.descendants.arrange order: :title
