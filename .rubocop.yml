@@ -1,12 +1,177 @@
 # Limit lines to 120 characters.
-Metrics/LineLength:
+# Metrics/LineLength:
+#   Enabled: true
+#   Max: 120
+#
+# # Disable top-level documentation of classes and modules
+# Style/Documentation:
+#   Enabled: false
+#
+# # Enable non-ascii (non-English) characters in comments
+# Style/AsciiComments:
+#   Enabled: false
+
+AllCops:
+  Exclude:
+    - db/schema.rb
+
+Rails:
   Enabled: true
+
+Style/AccessorMethodName:
+  Description: Check the naming of accessor methods for get_/set_.
+  Enabled: false
+
+Style/FileName:
+  Description: 'Use snake_case for source file names.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#snake-case-files'
+  Enabled: false
+
+AsciiComments:
+  Enabled: false
+
+ClassLength:
+  Max: 300
+
+CollectionMethods:
+  PreferredMethods:
+    reduce: inject
+    collect: map
+    find_all: select
+
+Documentation:
+  Enabled: false
+
+Style/DotPosition:
+  Description: 'Checks the position of the dot in multi-line method calls.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#consistent-multi-line-chains'
+  Enabled: false
+
+DoubleNegation:
+  Enabled: false
+
+EmptyLiteral:
+  Enabled: false
+
+Style/Encoding:
+  Description: 'Use UTF-8 as the source file encoding.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#utf-8'
+  Enabled: false
+  EnforcedStyle: always
+
+Style/EvenOdd:
+  Description: 'Favor the use of Fixnum#even? && Fixnum#odd?'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#predicate-methods'
+  Enabled: false
+
+Style/FormatString:
+  Description: 'Enforce the use of Kernel#sprintf, Kernel#format or String#%.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#sprintf'
+  Enabled: false
+
+Style/LineEndConcatenation:
+  Description: '>-Use \ instead of + or << to concatenate two string literals at line end.'
+  Enabled: false
+
+Metrics/LineLength:
   Max: 120
 
-# Disable top-level documentation of classes and modules
-Style/Documentation:
+Metrics/MethodLength:
+  Description: 'Avoid methods longer than 10 lines of code.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#short-methods'
+  Enabled: false
+  Max: 30
+
+Style/OpMethod:
+  Description: 'When defining binary operators, name the argument other.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#other-arg'
   Enabled: false
 
-# Enable non-ascii (non-English) characters in comments
-Style/AsciiComments:
+PredicateName:
+  NamePrefixBlacklist:
+    - is_
+
+Style/SingleLineBlockParams:
+  Description: 'Enforces the names of some block params.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#reduce-blocks'
   Enabled: false
+
+Style/SingleLineMethods:
+  Description: 'Avoid single-line methods.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-single-line-methods'
+  Enabled: false
+
+Style/SignalException:
+  Description: 'Checks for proper usage of fail and raise.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#fail-method'
+  Enabled: false
+
+StringLiterals:
+  EnforcedStyle: single_quotes
+  Enabled: false
+
+Style/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+
+HashSyntax:
+  Enabled: false
+
+Style/TrailingBlankLines:
+  Enabled: false
+
+Style/AndOr:
+  Description: 'Use &&/|| instead of and/or.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#no-and-or-or'
+  Enabled: false
+
+Style/IndentHash:
+  Description: 'Checks the indentation of the first key in a hash literal.'
+  Enabled: true
+  EnforcedStyle: consistent
+
+#Style/TrailingBlankLines:
+#  Description: 'Checks trailing blank lines and final newline.'
+#  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#newline-eof'
+#  Enabled: true
+#  EnforcedStyle: final_newline
+
+Style/RaiseArgs:
+  Enabled: false
+
+Style/Lambda:
+  Description: 'Use the new lambda literal syntax for single-line blocks.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#lambda-multi-line'
+  Enabled: false
+
+# Lint
+
+Lint/AssignmentInCondition:
+  Description: "Don't use assignment in conditions."
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#safe-assignment-in-condition'
+  Enabled: false
+
+LiteralInInterpolation:
+  Enabled: false
+
+Lint/UnusedMethodArgument:
+  Description: Checks for unused method arguments.
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#underscore-unused-vars
+  Enabled: false
+
+Lint/UnusedBlockArgument:
+  Enabled: false
+
+
+Rails/ActionFilter:
+  Description: Enforces consistent use of action filter methods.
+  Enabled: false
+
+Style/MultilineOperationIndentation:
+  Description: Checks indentation of binary operations that span more than one line.
+  Enabled: false
+
+Metrics/AbcSize:
+  Description: A calculated magnitude based on number of assignments, branches, and
+    conditions.
+  Enabled: true
+  Max: 35
