@@ -1,0 +1,12 @@
+# Limit lines to 120 characters.
+Metrics/LineLength:
+  Enabled: true
+  Max: 120
+
+# Disable top-level documentation of classes and modules
+Style/Documentation:
+  Enabled: false
+
+# Enable non-ascii (non-English) characters in comments
+Style/AsciiComments:
+  Enabled: false

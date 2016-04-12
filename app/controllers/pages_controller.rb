@@ -1,7 +1,8 @@
+#
 class PagesController < ApplicationController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
 
-  rescue_from ActiveRecord::RecordNotFound do |exception|
+  rescue_from ActiveRecord::RecordNotFound do
     redirect_to pages_url, alert: 'Page not found.'
   end
 
@@ -14,10 +15,10 @@ class PagesController < ApplicationController
 
   def new
     @page = Page.new
-    if params[:id]
-      parent_id = params[:id].split('/').last
-      @page.parent_id = parent_id if parent_id
-    end
+    return unless params[:id]
+
+    parent_id = params[:id].split('/').last
+    @page.parent_id = parent_id if parent_id
   end
 
   def create
@@ -53,11 +54,11 @@ class PagesController < ApplicationController
     id_arrays = params[:id].split '/'
     id = id_arrays.pop
 
-    if id_arrays.empty?
-      ancestry = nil
-    else
-      ancestry = id_arrays.join '/'
-    end
+    ancestry = if id_arrays.empty?
+                 nil
+               else
+                 id_arrays.join '/'
+               end
 
     @page = Page.find_by! id: id, ancestry: ancestry
   end
